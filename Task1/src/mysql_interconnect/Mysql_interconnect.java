@@ -19,7 +19,7 @@ public class Mysql_interconnect {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection m_connection = DriverManager.getConnection(
+			m_connection = DriverManager.getConnection(
 					"jdbc:mysql://" + m_server + ":" + m_port + "?useTimezone=true&serverTimezone=UTC", m_user,
 					m_password);
 			System.out.println("Server Connected");
@@ -43,10 +43,9 @@ public class Mysql_interconnect {
 	// crear bd
 	public void createDB(String name) {
 		try {
-			String query = "CREATE DATABASE " + name;
+			String query = "CREATE DATABASE " + name + ";";
 			Statement at = m_connection.createStatement();
 			at.executeUpdate(query);
-			closeConnection();
 			JOptionPane.showMessageDialog(null, "se a creado la base de datos " + name + " exitosamente");
 		} catch (SQLException ex) {
 			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +62,7 @@ public class Mysql_interconnect {
 			m_select_db.executeUpdate(m_db_usage_query);
 			String m_db_create_table_query = "CREATE TABLE " + m_name + " ( prueba INT PRIMARY KEY );";
 			Statement m_create_table = m_connection.createStatement();
-			m_select_db.executeUpdate(m_db_create_table_query);
+			m_create_table.executeUpdate(m_db_create_table_query);
 			System.out.println("Tabla creada con éxito!");
 		} catch (SQLException m_exception) {
 			System.out.println(m_exception.getMessage());
