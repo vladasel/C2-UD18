@@ -105,6 +105,19 @@ public class Mysql_interconnect {
 		}
 	}
 
+	// insert registro
+	public void insertRecord(String query) {
+		try {
+
+			Statement st = m_connection.createStatement();
+			st.executeUpdate(query);
+			System.out.println("Registro introducido con éxito!");
+		} catch (SQLException m_exception) {
+			System.out.println(m_exception.getMessage());
+			System.out.println("Error introduciendo registro.");
+		}
+	}
+	
 	// update fila
 	public void updateRecord(String query) {
 		try {
