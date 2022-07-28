@@ -53,6 +53,16 @@ public class Mysql_interconnect {
 	}
 	
 	//eliminar bd
+	public void deleteDB(String name) {
+		try {
+			String query = "DROP DATABASE " + name + ";";
+			Statement at = m_connection.createStatement();
+			at.executeUpdate(query);
+			JOptionPane.showMessageDialog(null, "se ha eliminado la base de datos " + name + " exitosamente");
+		} catch (SQLException ex) {
+			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 	
 	//crear tabla sin datos
 	public void createTable(String m_database, String m_name) {
