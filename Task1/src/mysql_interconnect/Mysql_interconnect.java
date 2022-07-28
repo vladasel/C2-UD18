@@ -101,4 +101,18 @@ public class Mysql_interconnect {
 	}
 
 	// eliminar tabla
+	public void dropTable(String m_database, String m_name) {
+		try {
+			String m_db_usage_query = "USE " + m_database + ";";
+			Statement m_select_db = m_connection.createStatement();
+			m_select_db.executeUpdate(m_db_usage_query);
+			String m_db_create_table_query = "DROP TABLE " + m_name + ";";
+			Statement m_create_table = m_connection.createStatement();
+			m_create_table.executeUpdate(m_db_create_table_query);
+			System.out.println("Tabla eliminada con éxito!");
+		} catch (SQLException m_exception) {
+			System.out.println(m_exception.getMessage());
+			System.out.println("Error eliminando table.");
+		}
+	}
 }
