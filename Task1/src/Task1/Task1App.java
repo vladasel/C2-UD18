@@ -31,6 +31,8 @@ public class Task1App {
 
 		m_conection.connect("", "", "", "");
 		
+		m_conection.createTable("ud18", "a");
+		
 		m_conection.closeConnection();
 	}
 

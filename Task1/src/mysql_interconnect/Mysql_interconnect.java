@@ -3,10 +3,12 @@ package mysql_interconnect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
+
 
 public class Mysql_interconnect {
 
@@ -37,33 +39,45 @@ public class Mysql_interconnect {
 			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
+	
 	// crear bd
 	public void createDB(String name) {
 		try {
 			String query = "CREATE DATABASE " + name;
-			Statement at = Conexion.createStatement();
+			Statement at = m_connection.createStatement();
 			at.executeUpdate(query);
 			closeConnection();
-			MySQLConnection("root", "", name);
 			JOptionPane.showMessageDialog(null, "se a creado la base de datos " + name + " exitosamente");
-		} catch (SQLExceptioin ex) {
-			Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (SQLException ex) {
+			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
-	// eliminar bd
-
-	// crear tabla sin datos
-
-	// crear tabla con datos
-
-	// update tabla
-
-	// update columna
-
-	// eliminar columna
-
-	// eliminar tabla
-
+	
+	//eliminar bd
+	
+	//crear tabla sin datos
+	public void createTable(String m_database, String m_name) {
+		try {
+			String m_db_usage_query = "USE " + m_database + ";";
+			Statement m_select_db = m_connection.createStatement();
+			m_select_db.executeUpdate(m_db_usage_query);
+			String m_db_create_table_query = "CREATE TABLE " + m_name + " ( prueba INT PRIMARY KEY );";
+			Statement m_create_table = m_connection.createStatement();
+			m_select_db.executeUpdate(m_db_create_table_query);
+			System.out.println("Tabla creada con éxito!");
+		} catch (SQLException m_exception) {
+			System.out.println(m_exception.getMessage());
+			System.out.println("Error creando table.");
+		}
+	}
+	
+	//crear tabla con datos
+	
+	//update tabla
+	
+	//update columna
+	
+	//eliminar columna
+	
+	//eliminar tabla
 }
