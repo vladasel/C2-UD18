@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-
 public class Mysql_interconnect {
 
 	Connection m_connection;
@@ -39,7 +38,7 @@ public class Mysql_interconnect {
 			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
+
 	// crear bd
 	public void createDB(String name) {
 		try {
@@ -51,8 +50,8 @@ public class Mysql_interconnect {
 			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
-	//eliminar bd
+
+	// eliminar bd
 	public void deleteDB(String name) {
 		try {
 			String query = "DROP DATABASE " + name + ";";
@@ -63,8 +62,8 @@ public class Mysql_interconnect {
 			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
-	//crear tabla sin datos
+
+	// crear tabla sin datos
 	public void createTable(String m_database, String m_name) {
 		try {
 			String m_db_usage_query = "USE " + m_database + ";";
@@ -79,14 +78,27 @@ public class Mysql_interconnect {
 			System.out.println("Error creando table.");
 		}
 	}
-	
-	//crear tabla con datos
-	
-	//update tabla
-	
-	//update columna
-	
-	//eliminar columna
-	
-	//eliminar tabla
+
+	// crear tabla con datos
+
+	// update tabla
+
+	// update fila
+
+	// eliminar fila
+	public void deleteRecord(String table, String atributo, String valor) {
+		try {
+			String query = "DELETE FROM " + table + " WHERE " + atributo + " = " + valor + ";";
+			Statement at = m_connection.createStatement();
+			at.executeUpdate(query);
+			JOptionPane.showMessageDialog(null, "registro eliminado");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("no se a podido eliminar el registro");
+
+		}
+
+	}
+
+	// eliminar tabla
 }
