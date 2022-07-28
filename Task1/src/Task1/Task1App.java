@@ -30,6 +30,8 @@ public class Task1App {
 		m_conection.connect(m_host, m_port, m_user, String.valueOf(m_pwdfld.getPassword()));*/
 
 		m_conection.connect("", "", "", "");
+		
+		m_conection.closeConnection();
 	}
 
 }
