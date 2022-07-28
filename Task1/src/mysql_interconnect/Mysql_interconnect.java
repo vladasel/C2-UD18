@@ -3,13 +3,20 @@ package mysql_interconnect;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 public class Mysql_interconnect {
 
+	Connection m_connection;
+	
+	//abrir conexion
 	public void connect(String m_server, String m_port, String m_user, String m_password) {
 		try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        Connection m_connection = DriverManager.getConnection(
+	        m_connection = DriverManager.getConnection(
 	        		"jdbc:mysql://" + m_server + ":" + m_port + "?useTimezone=true&serverTimezone=UTC",
 	        		m_user, m_password);
 	        System.out.println("Server Connected");
@@ -20,9 +27,15 @@ public class Mysql_interconnect {
 	    }
 	}
 	
-	//abrir conexion
-	
 	//cerrar conexion
+	public void closeConnection() {
+		try {
+			m_connection.close();
+			JOptionPane.showMessageDialog (null, "Se ha finalizado la conexión con el servidor");
+		} catch (SQLException ex) {
+				Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 	
 	//crear bd
 	
