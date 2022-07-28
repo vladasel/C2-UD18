@@ -63,15 +63,28 @@ public class Mysql_interconnect {
 		}
 	}
 
-	// crear tabla sin datos
-	public void createTable(String m_database, String m_name) {
+	// use db
+	public void useDB(String m_database) {
+
 		try {
 			String m_db_usage_query = "USE " + m_database + ";";
-			Statement m_select_db = m_connection.createStatement();
+			Statement m_select_db;
+			m_select_db = m_connection.createStatement();
 			m_select_db.executeUpdate(m_db_usage_query);
-			String m_db_create_table_query = "CREATE TABLE " + m_name + " ( prueba INT PRIMARY KEY );";
-			Statement m_create_table = m_connection.createStatement();
-			m_create_table.executeUpdate(m_db_create_table_query);
+			System.out.println("se esta usando " + m_database);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("no se a podido utilizar la base de datos " + m_database);
+		}
+
+	}
+
+	// crear tabla
+	public void createTable(String query) {
+		try {
+
+			Statement st = m_connection.createStatement();
+			st.executeUpdate(query);
 			System.out.println("Tabla creada con éxito!");
 		} catch (SQLException m_exception) {
 			System.out.println(m_exception.getMessage());
@@ -79,11 +92,32 @@ public class Mysql_interconnect {
 		}
 	}
 
-	// crear tabla con datos
-
 	// update tabla
+	public void updateTable(String query) {
+		try {
+
+			Statement st = m_connection.createStatement();
+			st.executeUpdate(query);
+			System.out.println("Tabla modificada con éxito!");
+		} catch (SQLException m_exception) {
+			System.out.println(m_exception.getMessage());
+			System.out.println("Error actualizando table.");
+		}
+	}
 
 	// update fila
+	public void updateRecord(String query) {
+		try {
+
+			Statement at = m_connection.createStatement();
+			at.executeUpdate(query);
+			JOptionPane.showMessageDialog(null, "registro actualizado");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("no se a podido actualizar el registro");
+		}
+
+	}
 
 	// eliminar fila
 	public void deleteRecord(String table, String atributo, String valor) {
