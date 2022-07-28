@@ -11,6 +11,8 @@ public class Task1App {
 	public static void main(String[] args) {
 		Mysql_interconnect m_conection = new Mysql_interconnect();
 		
+		/* Production Build
+		 
 		String m_host = JOptionPane.showInputDialog("Type the hostname");
 		String m_port = JOptionPane.showInputDialog("Type the port");
 		String m_user = JOptionPane.showInputDialog("Type " + m_host + "'s username");
@@ -25,8 +27,9 @@ public class Task1App {
 		JOptionPane.showMessageDialog(null, "Connecting to " + m_host + ":" +
 				m_port + " -> " + m_user + "@" + String.valueOf(m_pwdfld.getPassword()));
 		       
-		m_conection.connect(m_host, m_port, m_user, String.valueOf(m_pwdfld.getPassword()));
+		m_conection.connect(m_host, m_port, m_user, String.valueOf(m_pwdfld.getPassword()));*/
 
+		m_conection.connect("", "", "", "");
 	}
 
 }
