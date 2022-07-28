@@ -32,7 +32,7 @@ public class Task1App {
 		
 		m_conection.createDB("ud19");
 		
-		m_conection.createTable("ud19", "a");
+		m_conection.createTable("");
 		
 		m_conection.closeConnection();
 	}
