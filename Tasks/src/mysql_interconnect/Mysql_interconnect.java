@@ -42,7 +42,7 @@ public class Mysql_interconnect {
 	// crear bd
 	public void createDB(String name) {
 		try {
-			String query = "CREATE DATABASE " + name + ";";
+			String query = "CREATE DATABASE IF NOT EXISTS " + name + ";";
 			Statement at = m_connection.createStatement();
 			at.executeUpdate(query);
 			JOptionPane.showMessageDialog(null, "se a creado la base de datos " + name + " exitosamente");
