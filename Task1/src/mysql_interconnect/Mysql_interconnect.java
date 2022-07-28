@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 public class Mysql_interconnect {
 
 	Connection m_connection;
-	
-	//abrir conexion
+
+	// abrir conexion
 	public void connect(String m_server, String m_port, String m_user, String m_password) {
 		try {
 
@@ -28,31 +28,42 @@ public class Mysql_interconnect {
 		}
 	}
 
-	
-	//cerrar conexion
+	// cerrar conexion
 	public void closeConnection() {
 		try {
 			m_connection.close();
-			JOptionPane.showMessageDialog (null, "Se ha finalizado la conexión con el servidor");
+			JOptionPane.showMessageDialog(null, "Se ha finalizado la conexión con el servidor");
 		} catch (SQLException ex) {
-				Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(Mysql_interconnect.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
-	//crear bd
-	
-	//eliminar bd
-	
-	//crear tabla sin datos
-	
-	//crear tabla con datos
-	
-	//update tabla
-	
-	//update columna
-	
-	//eliminar columna
-	
-	//eliminar tabla
+
+	// crear bd
+	public void createDB(String name) {
+		try {
+			String query = "CREATE DATABASE " + name;
+			Statement at = Conexion.createStatement();
+			at.executeUpdate(query);
+			closeConnection();
+			MySQLConnection("root", "", name);
+			JOptionPane.showMessageDialog(null, "se a creado la base de datos " + name + " exitosamente");
+		} catch (SQLExceptioin ex) {
+			Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	// eliminar bd
+
+	// crear tabla sin datos
+
+	// crear tabla con datos
+
+	// update tabla
+
+	// update columna
+
+	// eliminar columna
+
+	// eliminar tabla
 
 }
