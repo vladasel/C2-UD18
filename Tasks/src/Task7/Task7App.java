@@ -7,7 +7,7 @@ public class Task7App {
 	public static void main(String[] args) {
 		Mysql_interconnect my_conection = new Mysql_interconnect();
 		// conectamos
-		my_conection.connect("192.168.5.104", "3306", "remote", "27ione91");
+		my_conection.connect("192.168.5.104", "3306", "usesrt", "password");
 		// Creamos la base de datos
 		my_conection.createDB("ud18_7");
 		// elegimos la base de datos

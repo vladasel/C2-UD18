@@ -15,6 +15,11 @@ public class Task9App {
 		my_conection.createTable("");
 		my_conection.createTable("");
 		
+		my_conection.insertRecord("");
+		my_conection.insertRecord("");
+		my_conection.insertRecord("");
+		my_conection.insertRecord("");
+		
 	}
 
 }
