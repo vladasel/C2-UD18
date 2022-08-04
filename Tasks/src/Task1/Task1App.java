@@ -34,7 +34,7 @@ public class Task1App {
 		m_connection.insertRecord("insert into fabricante(identity, nombre) values (4, 'Nintendo')");
 		m_connection.insertRecord("insert into fabricante(identity, nombre) values (5, 'Amiga')");
 		
-		m_connection.insertRecord("insert into articulos(identity, nombre, precio, fabricante) values (0, 'Head Screwdriver', 10, 1)");
+		m_connection.insertRecord("insert into articulos(identity, nombre, precio, fabricante) values (1, 'Head Screwdriver', 10, 1)");
 		m_connection.insertRecord("insert into articulos(identity, nombre, precio, fabricante) values (2, 'PlayStation 2', 300, 2)");
 		m_connection.insertRecord("insert into articulos(identity, nombre, precio, fabricante) values (3, 'Xbox Classic', 350, 3)");
 		m_connection.insertRecord("insert into articulos(identity, nombre, precio, fabricante) values (4, 'NES', 250, 4)");
