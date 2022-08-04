@@ -20,7 +20,7 @@ public class Task1App {
 								);
 		
 		
-		m_connection.createTable("create table articulos ("						+
+		m_connection.createTable("create table if not exists articulos ("		+
 										"identity int primary key not null, "	+
 									    "nombre nvarchar(100), "				+
 									    "precio int, "							+
